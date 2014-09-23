@@ -1,10 +1,9 @@
-//Array to store input values
-	var inputArray = [];
+
 	
-
-	// var prevGuess = inputArray.length;
-
 $(document).ready(function(){
+
+	//Array to store input values
+	var inputArray = [];
 	
 	/*--- Display information modal box ---*/
   	$(".what").click(function(){
@@ -16,6 +15,7 @@ $(document).ready(function(){
   	$("a.close").click(function(){
   		$(".overlay").fadeOut(1000);
   	}); //End of hide modal
+
 
   	/***********************
   	START GAME - RANDOM NUMBER
@@ -34,7 +34,7 @@ $(document).ready(function(){
 	//Randomizes number on refresh
 	randomNum();
 
-	
+
 	/***********************
   		GUESS / VALIDATE
   	************************/
@@ -45,7 +45,7 @@ $(document).ready(function(){
   		var guessValue = $("#userGuess").val();
   		//Prevents page refresh on clicking the button
 		event.preventDefault();
-		//on click run the guess function
+		//on click run the guess function, takes the users input
 		guess(guessValue);
 
 
@@ -67,7 +67,7 @@ $(document).ready(function(){
 
 	
 
-	
+	/*Function that evaluates the guess value when guess button clicked*/
 	function guess(guessValue){
 		/*Distance from the guessed value*/
 		var distanceFrom = Math.abs(guessValue - gameNum);
@@ -138,9 +138,9 @@ $(document).ready(function(){
 						};
 					}else if(+distanceFrom >= 20){
 						if(distancePrevious > distanceFrom){
-							$("#feedback").text("Your Warm, But Geting Warmer");
+							$("#feedback").text("Your Warm, And Geting Warmer");
 						}else{
-							$("#feedback").text("Your Warm, But Geting Colder");
+							$("#feedback").text("Your Warm, And Geting Colder");
 						};	
 					}else if(+distanceFrom >= 5){
 						if(distancePrevious > distanceFrom){
@@ -180,8 +180,15 @@ $(document).ready(function(){
 		$("#userGuess").prop("disabled", false);
 		$("#guessButton").prop("disabled", false);
 		$("#feedback").text("Make your Guess!")
+		clearArray();
 	});	
+
+function clearArray(){
+	inputArray = [];
+};
+
 		
 });// End of doc ready
 
 
+	
